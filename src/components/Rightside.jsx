@@ -3,6 +3,17 @@ import React, { useEffect, useState } from 'react';
 const Rightside = () => {
   const [cardsData, setCardsData] = useState([]);
 
+  const handleClick = (id, title) => {
+    console.log(title);
+    openChatWindow(`/react/`, id, title);
+  };
+  
+  const openChatWindow = (url, id, title) => {
+    const popupUrl = `${url}?title=${encodeURIComponent(title)}&id=${encodeURIComponent(id)}`;
+    const popup = window.open(popupUrl, 'ChatWindow', 'width=600,height=400');
+    popup.document.title = title;
+  };
+
   useEffect(() => {
     fetch('http://localhost:8000/data')
       .then(res => res.json())
@@ -14,7 +25,7 @@ const Rightside = () => {
   }, []);
 
   return (
-    <div className="pt-3 text-white flex-grow">
+    <div className="pt-3 px-5 text-white flex-grow">
       <div className="grid grid-cols-3 gap-5">
         {cardsData.map(card => (
           <div
@@ -25,6 +36,7 @@ const Rightside = () => {
             style={{
               backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${card.backdrop_path})`
             }}
+            onClick={(e) => handleClick(card.id, card.title || card.name)}
           >
             <div className="opacity-0 group-hover:opacity-100">
               <span className="text-2xl font-bold text-black tracking-wider">

@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Leftside from "../components/Leftside";
 import Rightside from "../components/Rightside";
 
-function Dashboard() {
+function Dashboard({setIsAuthenticated}) {
 
     const[val, setVal] = useState(0)
 
@@ -17,7 +17,7 @@ function Dashboard() {
     <div className="bg-[#252A34] min-h-screen">
     <Header />
     <div className="flex ">
-    <Leftside tptp={valChange}/>
+    <Leftside tptp={valChange} setIsAuthenticated={setIsAuthenticated}/>
     <Rightside />
     </div>
     </div>
