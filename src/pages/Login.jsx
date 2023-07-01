@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { CredentialsContext } from '../App';
 import { useEffect } from 'react';
@@ -29,6 +27,7 @@ const Login = (props) => {
       });
       props.setIsAuthenticated(true);
     }
+    // eslint-disable-next-line
   }, []);
 
   const handleLogin = (e) => {
@@ -68,7 +67,7 @@ const Login = (props) => {
       <div className="flex items-center justify-center min-h-screen">
         <div className="items-center justify-center bg-gray-700 p-9 rounded-3xl">
           <div className="flex flex-col items-center justify-center">
-            <h1 className="text-4xl font-bold text-green-300">Login</h1>
+            <h1 className="text-4xl font-bold text-[#08D9D6]">Login</h1>
             <div className="flex flex-col space-y-4 mt-8">
               <input
                 type="text"
@@ -85,7 +84,7 @@ const Login = (props) => {
                 onChange={handleChange}
               />
               <button
-                className="px-4 py-2 bg-green-400 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+                className="px-4 py-2 bg-[#08D9D6] hover:bg-[#FF2E63] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
                 onClick={handleLogin}
               >
                 Login

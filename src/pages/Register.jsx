@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { CredentialsContext } from '../App';
-import { useContext } from 'react';
-const Register = (props) => {
+const Register = () => {
 
     const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [, setCredentials] = useContext(CredentialsContext);
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -42,7 +39,7 @@ const Register = (props) => {
         <div className="flex items-center justify-center min-h-screen">
           <div className="items-center justify-center bg-gray-700 p-9 rounded-3xl">
             <div className="flex flex-col items-center justify-center">
-              <h1 className="text-4xl font-bold text-green-300">Register</h1>
+            <h1 className="text-4xl font-bold text-[#08D9D6]">Register</h1>
               <div className="flex flex-col space-y-4 mt-8">
               <input
                 type="text"
@@ -59,12 +56,12 @@ const Register = (props) => {
                 onChange={handleChange}
               />
               <button
-                className="px-4 py-2 bg-green-400 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+                className="px-4 py-2 bg-[#08D9D6] hover:bg-[#FF2E63] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
                 onClick={handleLogin}
               >
                 Register
               </button>
-        <p>Already a User? <a href="/login" className="text-blue-600">Login</a></p>
+        <p className='text-white'>Already a User? <a href="/login" className="text-blue-600">Login</a></p>
         </div>
         </div>
         </div>

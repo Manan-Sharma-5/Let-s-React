@@ -14,20 +14,24 @@ const Leftside = (props) => {
       <div className="flex flex-col gap-5">
         <div
           className="border-2 p-3 text-white flex items-center justify-center hover:bg-[#FF2E63] duration-200 transition-all cursor-pointer"
-          onClick={() => props.tptp(0)}
+          onClick={() => props.setRightValue(0)}
         >
           <div className="">Trending</div>
         </div>
         <div
           className="border-2 p-3 text-white flex items-center justify-center hover:bg-[#FF2E63] duration-200 transition-all cursor-pointer"
-          onClick={() => props.tptp(1)}
+          onClick={() => props.setRightValue(1)}
         >
           <div className="">New Release</div>
         </div>
-        <div className="border-2 p-3 text-white flex items-center justify-center hover:bg-[#FF2E63] duration-200 transition-all cursor-pointer">
+        <div className="border-2 p-3 text-white flex items-center justify-center hover:bg-[#FF2E63] duration-200 transition-all cursor-pointer"
+        onClick={() => props.setRightValue(2)}
+        >
           <div className="">Movies</div>
         </div>
-        <div className="border-2 p-3 text-white flex items-center justify-center hover:bg-[#FF2E63] duration-200 transition-all cursor-pointer">
+        <div className="border-2 p-3 text-white flex items-center justify-center hover:bg-[#FF2E63] duration-200 transition-all cursor-pointer"
+        onClick={() => props.setRightValue(3)}
+        >
           <div className="">TV Shows</div>
         </div>
       </div>

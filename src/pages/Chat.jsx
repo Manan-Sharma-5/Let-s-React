@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import io from "socket.io-client";
+import axios from "axios";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { CredentialsContext } from "../App";
@@ -43,14 +44,28 @@ const Chat = () => {
     const sendMessage = (e) => {
         e.preventDefault();
         socket.emit("chat", { message, username });
+        axios.post("http://localhost:8000/messages", { message, username, id });
         setMessage("");
     };
 
     useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+      
         socket.on("chat", (payload) => {
-            setChat([...chat, payload]);
+          setChat([...chat, payload]); 
         });
-    });
+      
+        axios
+          .get(`http://localhost:8000/messages?id=${id}`)
+          .then((response) => {
+            setChat(response.data); 
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+        // eslint-disable-next-line
+      }, [chat]);
 
     return (
         <div className="flex flex-col min-h-screen bg-[#191825]">

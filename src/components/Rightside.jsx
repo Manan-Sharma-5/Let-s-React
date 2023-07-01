@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-const Rightside = () => {
-  const [cardsData, setCardsData] = useState([]);
+const Rightside = (props) => {
+  const { cardsData } = props;
 
   const handleClick = (id, title) => {
     console.log(title);
@@ -13,16 +13,6 @@ const Rightside = () => {
     const popup = window.open(popupUrl, 'ChatWindow', 'width=600,height=400');
     popup.document.title = title;
   };
-
-  useEffect(() => {
-    fetch('http://localhost:8000/data')
-      .then(res => res.json())
-      .then(data => {
-        setCardsData(data.results);
-        console.log(data);
-      })
-      .catch(err => console.error('error:', err));
-  }, []);
 
   return (
     <div className="pt-3 px-5 text-white flex-grow">
