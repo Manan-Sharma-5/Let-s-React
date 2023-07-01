@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ setSearchResults }) => {
+const Header = ({ onSearch }) => {
   const [search, setSearch] = useState("");
 
   const handleChange = (e) => {
@@ -10,21 +10,7 @@ const Header = ({ setSearchResults }) => {
   };
 
   const handleSearch = () => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzk5ZDEwN2ZmZGZmZDg5ODA2MjUyOGJmN2RiYjFhOSIsInN1YiI6IjY0OTZjZWY2NjJmMzM1MDBhZDAwNGRmZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JbmM-GMotf0O4Q7zy7HNO8vBLT4oXkjkR8MxfekMSnk'
-      }
-    };
-
-    fetch(`https://api.themoviedb.org/3/search/multi?query=${search}&include_adult=false&language=en-US&page=1`, options)
-      .then(response => response.json())
-      .then(data => {
-        setSearchResults(data);
-        setSearch("");
-      })
-      .catch(err => console.error(err));
+    onSearch(search);
   };
 
   const handleClick = () => {

@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { CredentialsContext } from '../App';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
   const [username, setUsername] = useState(localStorage.getItem('username') || '');
   const [password, setPassword] = useState(localStorage.getItem('password') || '');
   const [, setCredentials] = useContext(CredentialsContext);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -55,6 +58,8 @@ const Login = (props) => {
         console.log(username, password);
         props.setIsAuthenticated(true);
         alert('User Logged In Successfully');
+        navigate('/dashboard');
+
       })
       .catch((err) => {
         console.log(err);
