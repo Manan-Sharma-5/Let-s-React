@@ -4,7 +4,7 @@ import Leftside from "../components/Leftside";
 import Rightside from "../components/Rightside";
 
 function Dashboard({ setIsAuthenticated }) {
-  const [rightValue, setRightValue] = useState(5);
+  const [rightValue, setRightValue] = useState(0);
   const [cardsData, setCardsData] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
 
