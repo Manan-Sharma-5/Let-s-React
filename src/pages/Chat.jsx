@@ -7,15 +7,13 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { CredentialsContext } from "../App";
 
-const socket = io.connect("http://localhost:8001");
+const socket = io.connect("https://socket-react-lets.onrender.com");
 
 
 const Chat = () => {
 
     const [credentials] = useContext(CredentialsContext);
     const username = credentials ? credentials.username : null;
-
-    console.log(username);
 
     const [message, setMessage] = React.useState("");
     const [chat, setChat] = React.useState([]);

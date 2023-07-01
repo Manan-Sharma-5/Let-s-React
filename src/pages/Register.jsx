@@ -19,7 +19,7 @@ const Register = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/register', {
+        axios.post('https://react-lets.onrender.com/register', {
             username: username,
             password: password,
         }).then((res) => {
