@@ -32,8 +32,6 @@ const Chat = () => {
         setId(id);
     }, []);
 
-    socket.emit("join", { id });
-
     const handleChange = (e) => {
         e.preventDefault();
         setMessage(e.target.value);
@@ -50,8 +48,11 @@ const Chat = () => {
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
       
+        socket.emit("join", { id });
+
         socket.on("chat", (payload) => {
-          setChat([...chat, payload]); 
+            setChat((prevChat) => [...prevChat, payload]); 
+            console.log(payload)
         });
       
         axios
@@ -62,8 +63,12 @@ const Chat = () => {
           .catch((error) => {
             console.error(error);
           });
+
+          return () => {
+            socket.off("chat");
+          };
         // eslint-disable-next-line
-      }, [chat]);
+      }, []);
 
     return (
         <div className="flex flex-col min-h-screen bg-[#191825]">
