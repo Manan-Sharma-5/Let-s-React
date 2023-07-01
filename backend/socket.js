@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const fetch = require('node-fetch');
-const mongoose = require('mongoose');
 const server = require('http').createServer(app);
 
 const io = require('socket.io')(server, {
@@ -21,9 +19,6 @@ const io = require('socket.io')(server, {
       console.log(data);
     });
   });
-  
-  
-  app.use(cors());
   app.use(express.json());
 
   server.listen(8001, () => console.log('Socket ready'));
