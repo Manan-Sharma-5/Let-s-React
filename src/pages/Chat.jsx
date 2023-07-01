@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { CredentialsContext } from "../App";
 
-const socket = io.connect("https://react-lets.onrender.com:8001");
+const socket = io.connect("http://localhost:8001");
 
 
 const Chat = () => {

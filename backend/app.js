@@ -5,6 +5,8 @@ const fetch = require('node-fetch');
 const mongoose = require('mongoose');
 const server = require('http').createServer(app);
 
+app.use(cors());
+app.use(express.json());
 
 mongoose.connect('mongodb+srv://mashmanan:XRBoUR6E2r8LA8Gc@cluster0.em3lz0t.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true })
     .then(() => console.log('Connected to MongoDB...'))
