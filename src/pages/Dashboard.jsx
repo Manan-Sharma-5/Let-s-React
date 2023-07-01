@@ -30,7 +30,7 @@ function Dashboard({ setIsAuthenticated }) {
   useEffect(() => {
     if (rightValue === undefined || rightValue === 0) {
       setCardsData([]);
-      fetch("http://localhost:8000/data")
+      fetch("https://react-lets.onrender.com/data")
         .then((res) => res.json())
         .then((data) => {
           setCardsData(data.results);
@@ -40,7 +40,7 @@ function Dashboard({ setIsAuthenticated }) {
 
     if (rightValue === 1) {
       setCardsData([]);
-      fetch("http://localhost:8000/data/new")
+      fetch("https://react-lets.onrender.com/data/new")
         .then((res) => res.json())
         .then((data) => {
           setCardsData(data.results);
@@ -50,7 +50,7 @@ function Dashboard({ setIsAuthenticated }) {
 
     if (rightValue === 2) {
       setCardsData([]);
-      fetch("http://localhost:8000/data/movie/new")
+      fetch("https://react-lets.onrender.com/data/movie/new")
         .then((res) => res.json())
         .then((data) => {
           setCardsData(data.results);
@@ -60,7 +60,7 @@ function Dashboard({ setIsAuthenticated }) {
 
     if (rightValue === 3) {
       setCardsData([]);
-      fetch("http://localhost:8000/data/tv/new")
+      fetch("https://react-lets.onrender.com/data/tv/new")
         .then((res) => res.json())
         .then((data) => {
           setCardsData(data.results);

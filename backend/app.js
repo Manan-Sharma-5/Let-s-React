@@ -5,26 +5,6 @@ const fetch = require('node-fetch');
 const mongoose = require('mongoose');
 const server = require('http').createServer(app);
 
-const io = require('socket.io')(server, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['my-custom-header'],
-    credentials: true
-  }
-});
-
-io.on('connection', socket => {
-  socket.on('chat', (data) => {
-    socket.join(data.id);
-    io.to(data.id).emit('chat', data);
-    console.log(data);
-  });
-});
-
-
-app.use(cors());
-app.use(express.json());
 
 mongoose.connect('mongodb+srv://mashmanan:XRBoUR6E2r8LA8Gc@cluster0.em3lz0t.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true })
     .then(() => console.log('Connected to MongoDB...'))
@@ -153,4 +133,3 @@ app.get('/data/movie/new', (req, res) => {
     })
 
 app.listen(8000, () => console.log('Server ready'));
-server.listen(8001, () => console.log('Socket ready'));

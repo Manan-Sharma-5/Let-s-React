@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { CredentialsContext } from "../App";
 
-const socket = io.connect("http://localhost:8001");
+const socket = io.connect("https://react-lets.onrender.com:8001");
 
 
 const Chat = () => {
@@ -44,7 +44,7 @@ const Chat = () => {
     const sendMessage = (e) => {
         e.preventDefault();
         socket.emit("chat", { message, username });
-        axios.post("http://localhost:8000/messages", { message, username, id });
+        axios.post("https://react-lets.onrender.com/messages", { message, username, id });
         setMessage("");
     };
 
@@ -57,7 +57,7 @@ const Chat = () => {
         });
       
         axios
-          .get(`http://localhost:8000/messages?id=${id}`)
+          .get(`https://react-lets.onrender.com/messages?id=${id}`)
           .then((response) => {
             setChat(response.data); 
           })
